@@ -47,7 +47,7 @@ const operate = function(a,operator,b){
 const button = document.querySelector('button');
 const display = document.querySelector("#display");
 let displayValueArray =[];
-const singleNumber = '0123456789';
+const singleNumber = '0123456789.';
 
 
 document.addEventListener("click", (event)=>{
@@ -91,6 +91,7 @@ document.addEventListener("click", (event)=>{
                 firstVariable = parseFloat(displayValue);
                 display.textContent = displayValue;
 
+
             }
             else {
                 console.log(event.target.value);
@@ -101,9 +102,20 @@ document.addEventListener("click", (event)=>{
 
             }
         }
-        else if (event.target.value === "="){
-            displayValue = operate(firstVariable,operator,secondVariable);
-            display.textContent = displayValue;
+        else if (event.target.value === "=" ){
+            if (secondVariable === 0 && operator === divide){
+                displayValue = "LOL"
+                display.textContent = displayValue;
+            }
+            else {
+                displayValue = operate(firstVariable,operator,secondVariable);
+                display.textContent = Math.round(displayValue * 1000000) / 1000000;
+
+            }
+            firstVariable = 0;
+            secondVariable = 0;
+            operator = "doNothing" ;
+
 
         }
         else{

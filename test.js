@@ -5,6 +5,8 @@ const multiply=function(a,b){
 const operate = function(a,operator,b){
     return operator(a,b)
 }
-let functionname = window["multiply"]
-console.log(operate(1,functionname,12))
+
+
+
+console.log(Math.round(1.00000002 * 1000000) / 1000000)
 
